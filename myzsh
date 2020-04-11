@@ -1,0 +1,11 @@
+autoload -Uz vcs_info
+precmd() { 
+	vcs_info 
+	print ""
+}
+
+zstyle ':vcs_info:git:*' formats '%F{150}(%b)%r%f '
+
+setopt PROMPT_SUBST
+PROMPT='%(?.%F{green}√.%F{red}X)%f %U%B%F{240}${PWD/#$HOME/~}%f%b%u ==> %B%F{blue}%n%f%b ${vcs_info_msg_0_}> '$'\n'
+
